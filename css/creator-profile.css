@@ -1,0 +1,130 @@
+#creator-header {
+  background: linear-gradient(140deg, #242024 0%, #2f2830 65%, #242024 100%);
+  padding: 80px 24px 60px;
+  text-align: center;
+  color: var(--white);
+}
+
+.creator-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.creator-hero__text {
+  text-align: left;
+}
+
+#creator-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-full);
+  border: 4px solid var(--red-primary);
+  object-fit: cover;
+}
+
+#creator-name {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+#creator-designation {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0;
+}
+
+.creator-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.creator-stat-item {
+  text-align: center;
+}
+
+.creator-stat-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--red-primary);
+  line-height: 1;
+}
+
+.creator-stat-label {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#creator-bio {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#creator-full-bio p {
+  margin-bottom: 18px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+#creator-portfolio .container {
+  max-width: var(--max-width);
+}
+
+.portfolio-subsection {
+  margin-bottom: 36px;
+}
+
+.portfolio-subsection h2 {
+  margin-bottom: 24px;
+}
+
+#creator-quote blockquote {
+  position: relative;
+  font-size: 1.4rem;
+  font-style: italic;
+  border-left: 4px solid var(--red-primary);
+  padding: 20px 32px;
+  background: var(--bg-off-white);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+}
+
+#creator-quote blockquote::before {
+  content: "\201C";
+  position: absolute;
+  left: 10px;
+  top: -6px;
+  font-size: 2rem;
+  color: var(--red-primary);
+  font-style: normal;
+}
+
+.not-found-state {
+  padding: 100px 24px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .creator-hero {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .creator-hero__text {
+    text-align: center;
+  }
+
+  #creator-name {
+    font-size: 2.3rem;
+  }
+}

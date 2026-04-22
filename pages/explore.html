@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse and search Adobisphere events, blogs, and creators in one place.">
+  <title>Explore — Adobisphere</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/explore.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+
+  <main>
+    <section id="explore-header" class="section">
+      <div class="container">
+        <h1>Explore the Adobisphere</h1>
+        <p>Find events, stories, and creators shaping the next wave of digital creativity.</p>
+        <div class="explore-search-wrap">
+          <input id="explore-search" type="text" class="form-input" placeholder="Search events, blogs, creators..." aria-label="Search explore content">
+          <button id="explore-search-btn" type="button" aria-label="Search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="explore-tabs" class="section">
+      <div class="container">
+        <div class="tabs-nav" role="tablist" aria-label="Explore content tabs">
+          <button type="button" class="tab-btn active" data-tab="events" role="tab" aria-selected="true">Events &amp; Campaigns</button>
+          <button type="button" class="tab-btn" data-tab="blogs" role="tab" aria-selected="false">Blogs &amp; Articles</button>
+          <button type="button" class="tab-btn" data-tab="creators" role="tab" aria-selected="false">Creators</button>
+        </div>
+
+        <div id="filter-bar">
+          <div class="filter-group" data-filter-group="events">
+            <select id="events-category" class="form-input">
+              <option value="">All Categories</option>
+              <option value="Create Now Events">Create Now Events</option>
+              <option value="Creative Cafe Events">Creative Cafe Events</option>
+              <option value="Workshops">Workshops</option>
+              <option value="Webinars">Webinars</option>
+              <option value="Conferences">Conferences</option>
+              <option value="Community & Hackathons">Community & Hackathons</option>
+            </select>
+            <div class="date-radios" role="group" aria-label="Event date filter">
+              <label><input type="radio" name="events-date" value="all" checked> All</label>
+              <label><input type="radio" name="events-date" value="upcoming"> Upcoming</label>
+              <label><input type="radio" name="events-date" value="past"> Past</label>
+            </div>
+            <div class="form-label">Filter by location</div>
+            <div id="events-location" class="location-checkboxes" role="group" aria-label="Event location filter"></div>
+          </div>
+
+          <div class="filter-group is-hidden" data-filter-group="blogs">
+            <select id="blogs-category" class="form-input">
+              <option value="">All Categories</option>
+              <option value="AI & Emerging Technology">AI & Emerging Technology</option>
+              <option value="Creative Tools & Product Updates">Creative Tools & Product Updates</option>
+              <option value="Industry Trends & Thought Leadership">Industry Trends & Thought Leadership</option>
+              <option value="Community / Events / Creator Programs">Community / Events / Creator Programs</option>
+            </select>
+            <input id="blogs-author" type="text" class="form-input" placeholder="Search by author">
+            <select id="blogs-sort" class="form-input">
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
+
+          <div class="filter-group is-hidden" data-filter-group="creators">
+            <select id="creators-sort" class="form-input">
+              <option value="name-asc">Name A-Z</option>
+              <option value="name-desc">Name Z-A</option>
+              <option value="testimonials">Testimonials</option>
+            </select>
+            <div class="form-label">Designation</div>
+            <div id="creators-designation" class="location-checkboxes" role="group" aria-label="Creator designation filter"></div>
+          </div>
+
+          <button id="clear-filters" type="button" class="btn btn-ghost">Clear Filters</button>
+        </div>
+
+        <div id="events-grid" class="grid-3 explore-grid"></div>
+        <div class="pagination" id="events-pagination" aria-label="Events pagination">
+          <button class="btn btn-ghost" id="events-prev" type="button">Prev</button>
+          <span class="pagination__info" id="events-page" aria-live="polite"></span>
+          <button class="btn btn-ghost" id="events-next" type="button">Next</button>
+        </div>
+
+        <div id="blogs-grid" class="grid-3 explore-grid is-hidden"></div>
+        <div class="pagination is-hidden" id="blogs-pagination" aria-label="Blogs pagination">
+          <button class="btn btn-ghost" id="blogs-prev" type="button">Prev</button>
+          <span class="pagination__info" id="blogs-page" aria-live="polite"></span>
+          <button class="btn btn-ghost" id="blogs-next" type="button">Next</button>
+        </div>
+
+        <div id="creators-grid" class="grid-3 explore-grid is-hidden"></div>
+        <div class="pagination is-hidden" id="creators-pagination" aria-label="Creators pagination">
+          <button class="btn btn-ghost" id="creators-prev" type="button">Prev</button>
+          <span class="pagination__info" id="creators-page" aria-live="polite"></span>
+          <button class="btn btn-ghost" id="creators-next" type="button">Next</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <div id="toast-container"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/partials.js"></script>
+  <script src="../js/explore.js"></script>
+</body>
+</html>

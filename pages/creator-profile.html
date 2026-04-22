@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View creator profiles, portfolios, and social links from Adobisphere community members.">
+  <title>Creator Profile — Adobisphere</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/creator-profile.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+
+  <main>
+    <section id="creator-header">
+      <div class="container">
+        <div class="creator-hero">
+          <img id="creator-avatar" src="../assets/images/profiles/ariana-flores-creator.jpg" alt="Creator avatar">
+          <div class="creator-hero__text">
+            <h1 id="creator-name">Creator Name</h1>
+            <p id="creator-designation">Creator Designation</p>
+          </div>
+        </div>
+
+        <div class="creator-stats-row">
+          <div class="creator-stat-item">
+            <div class="creator-stat-number" id="stat-blogs">0</div>
+            <div class="creator-stat-label">Blogs Published</div>
+          </div>
+          <div class="creator-stat-item">
+            <div class="creator-stat-number" id="stat-events">0</div>
+            <div class="creator-stat-label">Events Hosted</div>
+          </div>
+          <div class="creator-stat-item">
+            <div class="creator-stat-number" id="stat-testimonials">0</div>
+            <div class="creator-stat-label">Testimonials</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="creator-bio" class="section">
+      <div class="container">
+        <h2 class="section-heading">About</h2>
+        <div id="creator-full-bio"></div>
+      </div>
+    </section>
+
+    <section id="creator-portfolio" class="section">
+      <div class="container">
+        <div class="portfolio-subsection">
+          <h2 class="section-heading">Events &amp; Campaigns</h2>
+          <div class="grid-3" id="creator-events-grid"></div>
+        </div>
+
+        <div class="portfolio-subsection">
+          <h2 class="section-heading">Published Blogs</h2>
+          <div class="grid-3" id="creator-blogs-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="creator-quote" class="section">
+      <div class="container">
+        <blockquote id="creator-quote-text"></blockquote>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <div id="toast-container"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/partials.js"></script>
+  <script src="../js/creator-profile.js"></script>
+</body>
+</html>

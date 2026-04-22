@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read featured blog posts from creators and explore stories, insights, and tips from the Adobisphere community.">
+  <title>Blog — Adobisphere</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+
+  <main>
+    <section id="article-header" class="section">
+      <div class="container article-header__inner">
+        <div class="article-meta-row">
+          <span id="article-category" class="badge">Category</span>
+          <span id="article-date" class="text-muted">Date</span>
+        </div>
+        <h1 id="article-title">Article Title</h1>
+
+        <div class="author-row">
+          <a id="author-avatar-link" href="#" aria-label="View author profile">
+            <img id="author-avatar" alt="Author avatar">
+          </a>
+          <div class="author-row__info">
+            <a id="author-name-link" href="#" aria-label="View author profile">
+              <p id="author-name">Author Name</p>
+            </a>
+            <p id="author-designation" class="text-muted">Author Designation</p>
+          </div>
+          <div class="author-socials" id="author-socials"></div>
+        </div>
+
+        <div class="article-actions">
+          <button id="save-blog-btn" class="btn btn-ghost" type="button">
+            <svg class="save-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 3H18C18.55 3 19 3.45 19 4V21L12 17L5 21V4C5 3.45 5.45 3 6 3Z" stroke="currentColor" stroke-width="1.7" fill="none"></path>
+            </svg>
+            <span class="save-label">Save Article</span>
+          </button>
+          <a href="/pages/blog-editor.html" class="btn btn-ghost">Write Your Own Blog →</a>
+        </div>
+      </div>
+
+      <div class="container article-cover-wrap">
+        <img id="article-cover" alt="Article cover image">
+      </div>
+    </section>
+
+    <section class="section">
+      <div id="article-body"></div>
+    </section>
+
+    <section id="author-bio-card" class="reveal">
+      <div class="author-bio-avatar-wrap">
+        <a id="author-bio-avatar-link" href="#" aria-label="View author profile">
+          <img id="author-bio-avatar" alt="Author profile image">
+        </a>
+      </div>
+      <div class="author-bio-content">
+        <a id="author-bio-name-link" href="#" aria-label="View author profile">
+          <h2 id="author-bio-name">Author Name</h2>
+        </a>
+        <p id="author-bio-designation" class="text-muted">Designation</p>
+        <p id="author-bio-text"></p>
+      </div>
+    </section>
+
+    <section id="comment-section" class="section">
+      <h2 class="section-heading">Discussion</h2>
+      <p id="comment-count" class="text-muted">0 Comments</p>
+
+      <div class="comment-composer">
+        <textarea id="comment-input" rows="4" placeholder="Share your thoughts..." maxlength="500"></textarea>
+        <div id="char-count">0/500</div>
+        <button id="post-comment-btn" class="btn btn-primary" type="button">Post Comment</button>
+        <div id="comment-error" class="form-error"></div>
+      </div>
+
+      <div id="comments-list"></div>
+    </section>
+
+    <section id="related-articles" class="section">
+      <div class="container">
+        <h2 class="section-heading">More from the Blog</h2>
+        <div class="grid-3" id="related-articles-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <div id="toast-container"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/partials.js"></script>
+  <script src="../js/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View event details, schedules, and speakers, and save events in the Adobisphere platform.">
+  <title>Event Details — Adobisphere</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/event.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+
+  <main>
+    <section id="event-hero">
+      <div class="event-hero">
+        <img id="event-hero-img" alt="Event banner">
+        <div class="event-hero__overlay" aria-hidden="true"></div>
+        <div class="event-hero__content container">
+          <span id="event-category-badge" class="badge">Category</span>
+          <h1 id="event-title">Event Title</h1>
+          <p id="event-date-display"></p>
+          <p id="event-location-display"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="event-action-bar">
+      <div class="container event-action-bar__inner">
+        <button id="save-event-btn" class="btn btn-ghost save-btn" type="button">
+          <svg class="save-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 3H18C18.55 3 19 3.45 19 4V21L12 17L5 21V4C5 3.45 5.45 3 6 3Z" stroke="currentColor" stroke-width="1.7" fill="none"></path>
+          </svg>
+          <span class="save-label">Save Event</span>
+        </button>
+        <button id="register-btn" class="btn btn-primary" type="button">Register for this Event</button>
+      </div>
+    </section>
+
+    <section id="event-overview" class="section">
+      <div class="container">
+        <h2 class="section-heading">Event Overview</h2>
+        <div class="event-overview-grid">
+          <p><strong>Date &amp; Time:</strong> <span id="event-datetime-full"></span></p>
+          <p><strong>Venue:</strong> <span id="event-venue"></span></p>
+          <p><strong>Category:</strong> <span id="event-category-label"></span></p>
+        </div>
+        <p id="event-full-description" class="event-full-description"></p>
+      </div>
+    </section>
+
+    <section id="event-agenda" class="section">
+      <div class="container">
+        <h2 class="section-heading">Schedule &amp; Agenda</h2>
+        <div id="agenda-timeline"></div>
+      </div>
+    </section>
+
+    <section id="event-presenters" class="section">
+      <div class="container">
+        <h2 class="section-heading">Presenters</h2>
+        <div id="presenters-list"></div>
+      </div>
+    </section>
+
+    <section id="event-speakers" class="section">
+      <div class="container">
+        <h2 class="section-heading">Guest Speakers</h2>
+        <div id="speakers-list"></div>
+      </div>
+    </section>
+
+    <section id="event-hosts" class="section">
+      <div class="container">
+        <h2 class="section-heading">Event Hosts</h2>
+        <div id="hosts-list" class="hosts-list"></div>
+      </div>
+    </section>
+
+    <section id="event-closing-quote" class="section" hidden aria-hidden="true">
+      <div class="container">
+        <blockquote id="closing-quote-text"></blockquote>
+      </div>
+    </section>
+
+    <section id="related-events" class="section">
+      <div class="container">
+        <h2 class="section-heading">You Might Also Like</h2>
+        <div class="grid-3" id="related-events-grid"></div>
+      </div>
+    </section>
+
+    <div id="registration-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-box">
+        <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+        <h2>Register for <span id="modal-event-title"></span></h2>
+        <form id="registration-form" novalidate>
+          <p class="text-muted" style="margin-bottom:16px">Fill in your preferences below to confirm registration.</p>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-food">Food Preference</label>
+            <select id="reg-food" class="form-input">
+              <option value="">Select preference</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="non-vegetarian">Non-Vegetarian</option>
+              <option value="gluten-free">Gluten-Free</option>
+              <option value="no-preference">No Preference</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Will you bring a companion?</label>
+            <div style="display:flex;gap:16px;margin-top:6px">
+              <label><input type="radio" name="reg-companion" value="no" checked> No</label>
+              <label><input type="radio" name="reg-companion" value="yes"> Yes (max 2)</label>
+            </div>
+          </div>
+
+          <div id="companion-fields" style="display:none">
+            <div id="companion-1" class="companion-block" style="border:1px solid var(--neutral-light);border-radius:var(--radius-md);padding:16px;margin-bottom:12px">
+              <p style="font-weight:600;margin-bottom:12px">Companion 1</p>
+              <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" id="comp1-name" placeholder="Full name"></div>
+              <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="comp1-email" placeholder="Email address"></div>
+              <div class="form-group"><label class="form-label">Age</label><input type="number" class="form-input" id="comp1-age" min="1" max="120" placeholder="Age"></div>
+              <div class="form-group"><label class="form-label">Designation</label><input type="text" class="form-input" id="comp1-designation" placeholder="e.g. Graphic Designer"></div>
+            </div>
+            <div id="companion-2" class="companion-block" style="border:1px solid var(--neutral-light);border-radius:var(--radius-md);padding:16px;margin-bottom:12px">
+              <p style="font-weight:600;margin-bottom:12px">Companion 2 (optional)</p>
+              <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" id="comp2-name" placeholder="Full name"></div>
+              <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="comp2-email" placeholder="Email address"></div>
+              <div class="form-group"><label class="form-label">Age</label><input type="number" class="form-input" id="comp2-age" min="1" max="120" placeholder="Age"></div>
+              <div class="form-group"><label class="form-label">Designation</label><input type="text" class="form-input" id="comp2-designation" placeholder="e.g. Graphic Designer"></div>
+            </div>
+          </div>
+
+          <div id="reg-error" class="form-error" aria-live="polite"></div>
+          <div id="reg-success" class="form-success" aria-live="polite"></div>
+          <button id="reg-submit" type="submit" class="btn btn-primary" style="width:100%;margin-top:8px">Confirm Registration</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="cancel-registration-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-box">
+        <h2>Cancel Registration?</h2>
+        <p class="text-muted" style="margin-top:10px">Are you sure you want to cancel your registration for this event?</p>
+        <div style="display:flex;gap:12px;margin-top:24px">
+          <button id="cancel-reg-confirm-btn" class="btn btn-primary" style="background:#dc2626">Yes, Cancel</button>
+          <button id="cancel-reg-dismiss-btn" class="btn btn-ghost">Keep Registration</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <div id="toast-container"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/partials.js"></script>
+  <script src="../js/event.js"></script>
+</body>
+</html>

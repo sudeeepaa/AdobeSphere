@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage your Adobisphere profile, saved items, and your published blogs.">
+  <title>My Profile — Adobisphere</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/user-profile.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+
+  <main>
+    <section id="profile-header" class="section">
+      <div class="container">
+        <div class="avatar-upload-wrap" aria-label="Avatar upload">
+          <img id="profile-avatar" src="../assets/images/profiles/default-user.jpg" alt="User avatar">
+          <label class="avatar-overlay" for="avatar-input">
+            Upload Photo
+            <input type="file" id="avatar-input" accept=".jpg,.png,.webp,image/jpeg,image/png,image/webp">
+          </label>
+        </div>
+
+        <div class="profile-edit-head">
+          <h1 id="profile-name-display">Your Name</h1>
+          <input id="profile-name-input" class="form-input" type="text" placeholder="Your name" style="display:none">
+
+          <p id="profile-designation-display">Your Designation</p>
+          <input id="profile-designation-input" class="form-input" type="text" placeholder="Your designation" style="display:none">
+
+          <div id="profile-bio-display">Add your short bio here.</div>
+          <textarea id="profile-bio-input" class="form-input" rows="4" placeholder="Write your bio" style="display:none"></textarea>
+
+          <div class="profile-social-fields">
+            <label for="social-linkedin">LinkedIn</label>
+            <input id="social-linkedin" class="form-input" type="url" placeholder="https://linkedin.com/in/yourprofile">
+          </div>
+
+          <div class="profile-actions">
+            <button id="edit-profile-btn" class="btn btn-ghost">Edit Profile</button>
+            <button id="save-profile-btn" class="btn btn-primary" style="display:none">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="saved-section" class="section">
+      <div class="container">
+        <h2 class="section-heading">Saved Content</h2>
+
+        <div class="tabs-nav" id="saved-tabs" role="tablist" aria-label="Saved content tabs">
+          <button class="tab-btn active" id="saved-events-tab" data-saved-tab="events" role="tab" aria-selected="true">Saved Events</button>
+          <button class="tab-btn" id="saved-blogs-tab" data-saved-tab="blogs" role="tab" aria-selected="false">Saved Blogs</button>
+        </div>
+
+        <div id="saved-events-grid" class="grid-3 profile-grid"></div>
+        <div id="saved-blogs-grid" class="grid-3 profile-grid" style="display:none"></div>
+      </div>
+    </section>
+
+    <section id="registered-section" class="section">
+      <div class="container">
+        <h2 class="section-heading">My Registrations</h2>
+        <div id="registered-events-grid" class="grid-3 profile-grid"></div>
+      </div>
+    </section>
+
+    <section id="my-blogs-section" class="section">
+      <div class="container">
+        <div class="my-blogs-head">
+          <h2 class="section-heading">My Published Blogs</h2>
+          <a href="/pages/blog-editor.html" class="btn btn-primary my-blogs-cta">Write a New Blog</a>
+        </div>
+        <div id="my-blogs-grid" class="grid-3 profile-grid"></div>
+      </div>
+    </section>
+
+    <div id="delete-blog-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-box">
+        <h2>Delete Blog?</h2>
+        <p class="text-muted" style="margin-top:10px;">This will permanently delete your blog and all its comments. This cannot be undone.</p>
+        <div style="display:flex;gap:12px;margin-top:24px;">
+          <button id="delete-blog-confirm-btn" class="btn btn-primary" style="background:#dc2626">Delete</button>
+          <button id="delete-blog-cancel-btn" class="btn btn-ghost">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="cancel-reg-profile-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-box">
+        <h2>Cancel Registration?</h2>
+        <p class="text-muted" style="margin-top:10px">Are you sure you want to cancel this event registration?</p>
+        <div style="display:flex;gap:12px;margin-top:24px">
+          <button id="profile-cancel-reg-confirm" class="btn btn-primary" style="background:#dc2626">Yes, Cancel</button>
+          <button id="profile-cancel-reg-dismiss" class="btn btn-ghost">Keep</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+  <div id="toast-container"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/partials.js"></script>
+  <script src="../js/user-profile.js"></script>
+</body>
+</html>

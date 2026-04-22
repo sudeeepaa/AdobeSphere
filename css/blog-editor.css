@@ -1,0 +1,29 @@
+.blog-editor-simple {
+  padding-top: 36px;
+  padding-bottom: 60px;
+}
+
+.blog-editor-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 18px;
+}
+
+.blog-editor-form {
+  max-width: 760px;
+  background: var(--white);
+  border: 1px solid var(--neutral-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+}
+
+#blog-body {
+  min-height: 260px;
+  resize: vertical;
+}
+
+#blog-submit {
+  width: 100%;
+  justify-content: center;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Write and publish a simple Adobisphere blog post.">
+  <title>Write a Blog — Adobisphere</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/blog-editor.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+
+  <main>
+    <section class="section blog-editor-simple">
+      <div class="container">
+        <h1 class="blog-editor-heading">Write your blog</h1>
+
+        <form id="blog-editor-form" class="blog-editor-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="blog-heading">Heading</label>
+            <input id="blog-heading" class="form-input" type="text" placeholder="Enter blog heading">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="blog-body">Write your blog</label>
+            <textarea id="blog-body" class="form-input" rows="10" placeholder="Start writing here..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="blog-category">Category</label>
+            <select id="blog-category" class="form-input">
+              <option value="">Loading categories…</option>
+            </select>
+            <input id="blog-category-other" class="form-input" type="text" placeholder="Enter your category" style="display:none; margin-top:10px">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="blog-image">Image link</label>
+            <input id="blog-image" class="form-input" type="url" placeholder="https://...">
+          </div>
+
+          <button id="blog-submit" class="btn btn-primary" type="submit">Publish Blog</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+  <div id="toast-container"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/partials.js"></script>
+  <script src="../js/blog-editor.js"></script>
+</body>
+</html>

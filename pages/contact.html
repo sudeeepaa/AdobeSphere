@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact the Adobisphere team with questions, feedback, or partnership inquiries.">
+  <title>Contact — Adobisphere</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/contact.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+
+  <main>
+    <section id="contact-page-header" class="section">
+      <div class="container">
+        <h1>Get in Touch</h1>
+        <p>Questions, feedback, or collaboration ideas? We would love to hear from you.</p>
+        <p class="contact-note" id="contact-response-note">We typically respond within 24–48 hours. No account is required to contact us.</p>
+        <p class="contact-note" id="contact-owner-note">
+          Made by <span id="contact-owner-name">Sudeepa Santhanam</span> —
+          <a id="contact-owner-link" href="https://www.linkedin.com/in/sudeepasanthanam/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="contact-main" class="section">
+      <div class="container contact-layout">
+        <div class="contact-form-wrap">
+          <div id="contact-success" role="status" aria-live="polite"></div>
+
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="contact-name">Full Name</label>
+              <input id="contact-name" class="form-input" type="text" autocomplete="name">
+              <span class="form-error" data-error-for="contact-name"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input id="contact-email" class="form-input" type="email" autocomplete="email">
+              <span class="form-error" data-error-for="contact-email"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input id="contact-subject" class="form-input" type="text">
+              <span class="form-error" data-error-for="contact-subject"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-category">Category</label>
+              <select id="contact-category" class="form-input">
+                <option value="">Select a category</option>
+                <option>General Inquiry</option>
+                <option>Event Registration Help</option>
+                <option>Blog Submission</option>
+                <option>Sign Up / Login Issue</option>
+                <option>Account / Profile Help</option>
+                <option>Technical Issue</option>
+                <option>Creator Profile</option>
+                <option>Other</option>
+              </select>
+              <span class="form-error" data-error-for="contact-category"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" class="form-input" rows="6" maxlength="500"></textarea>
+              <span id="msg-char-count">0 / 500 characters</span>
+              <span class="form-error" data-error-for="contact-message"></span>
+            </div>
+
+            <button type="button" id="contact-submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+
+        <aside id="faq-section">
+          <h2>Frequently Asked Questions</h2>
+          <div id="faq-accordion">
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-0">How do I register for an event?</button>
+              <div class="faq-answer" id="faq-answer-0">Go to the Explore page, open any event card, and click Register. You’ll need to be signed in first — <a href='signup.html'>create a free account</a> to get started.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1">How do I save a blog or event?</button>
+              <div class="faq-answer" id="faq-answer-1">Click the bookmark icon on any blog or event card. You’ll need to <a href='login.html'>sign in</a> first — your saved items will appear in your profile dashboard.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2">How do I write and publish my own blog?</button>
+              <div class="faq-answer" id="faq-answer-2">Open the <a href='blog-editor.html'>Blog Editor</a>, create your post using the block editor, add the required metadata, and click Publish.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3">How do I update my profile information?</button>
+              <div class="faq-answer" id="faq-answer-3">Visit <a href='user-profile.html'>My Profile</a> while signed in. You can edit your information directly from the profile page.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4">How do I view all creators on the platform?</button>
+              <div class="faq-answer" id="faq-answer-4">Visit the <a href='explore.html?tab=creators'>Explore page</a> and switch to the Creators tab to browse all creators.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5">Is this platform free to use?</button>
+              <div class="faq-answer" id="faq-answer-5">Yes — the Adobisphere platform is completely free to explore, use, and contribute to.</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+  <div id="toast-container"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/partials.js"></script>
+  <script src="../js/contact.js"></script>
+</body>
+</html>
