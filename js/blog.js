@@ -61,7 +61,6 @@ function resolveAuthorCreatorId(blog) {
   var author = blog.author || {};
   var authorId = author.id || null;
 
-  // Fix legacy blogs that stored "user-created" as the author ID
   if ((!authorId || authorId === "user-created") && blog.ownerIdentity) {
     return "user:" + String(blog.ownerIdentity).trim().toLowerCase();
   }
@@ -111,7 +110,6 @@ function renderArticleBody(blog) {
   if (!bodyEl) return;
   bodyEl.innerHTML = "";
 
-  // If it's a static blog from JSON, it has a content array.
   if (blog && Array.isArray(blog.content) && blog.content.length) {
     var coverNorm = Utils.normalizeAssetSrc(blog.coverImage || "", "");
 
@@ -164,7 +162,6 @@ function renderArticleBody(blog) {
     return;
   }
 
-  // If it's a user blog, it has a plain text body.
   var rawBody = String((blog && blog.body) || "").trim();
   if (!rawBody) return;
 
