@@ -64,6 +64,50 @@ function populateBio(creator) {
   }).join("");
 }
 
+function renderReachOut(creator) {
+  var section = byId("creator-reach-out");
+  var holder = byId("creator-reach-out-links");
+  if (!section || !holder) return;
+
+  var emailRaw = creator && creator.email ? String(creator.email).trim() : "";
+  var hasEmail = Utils.validateEmail(emailRaw);
+
+  var linkedinRaw = creator && creator.socials && creator.socials.linkedin ? String(creator.socials.linkedin).trim() : "";
+  var linkedinUrl = Utils.safeExternalUrl(linkedinRaw);
+  var hasLinkedin = /^https:\/\/(www\.)?linkedin\.com\//i.test(linkedinUrl);
+
+  if (!hasEmail && !hasLinkedin) {
+    section.style.display = "none";
+    holder.innerHTML = "";
+    return;
+  }
+
+  var chunks = [];
+
+  if (hasEmail) {
+    chunks.push(''
+      + '<a class="creator-contact-pill creator-contact-pill--email" href="mailto:' + Utils.escapeHtml(emailRaw) + '" aria-label="Email creator">'
+      + '  <span class="creator-contact-pill__icon" aria-hidden="true">'
+      + '    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>'
+      + '  </span>'
+      + '  <span>' + Utils.escapeHtml(emailRaw) + '</span>'
+      + '</a>');
+  }
+
+  if (hasLinkedin) {
+    chunks.push(''
+      + '<a class="creator-contact-pill creator-contact-pill--linkedin" href="' + Utils.escapeHtml(linkedinUrl) + '" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">'
+      + '  <span class="creator-contact-pill__icon" aria-hidden="true">'
+      + '    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.2 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.6c0-3.37-1.8-4.94-4.2-4.94-1.93 0-2.8 1.06-3.28 1.8V8.5H9.58V20h3.38v-6.14c0-1.62.3-3.2 2.3-3.2 1.98 0 2.01 1.85 2.01 3.3V20h3.37v-6.4z"></path></svg>'
+      + '  </span>'
+      + '  <span>Connect on LinkedIn</span>'
+      + '</a>');
+  }
+
+  section.style.display = "block";
+  holder.innerHTML = '<div class="creator-contact-list">' + chunks.join("") + '</div>';
+}
+
 function renderEventsGrid(creator, campaigns) {
   var target = byId("creator-events-grid");
   var ids = creator.eventIds || [];
@@ -169,6 +213,7 @@ function init() {
 
     populateHeader(creator);
     populateBio(creator);
+    renderReachOut(creator);
     renderEventsGrid(creator, campaigns);
     renderBlogsGrid(creator, blogs);
     renderQuote(creator);

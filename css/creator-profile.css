@@ -76,6 +76,56 @@
   line-height: 1.75;
 }
 
+#creator-reach-out .container {
+  max-width: 800px;
+}
+
+.creator-contact-list {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.creator-contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.creator-contact-pill:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.creator-contact-pill--email {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.creator-contact-pill--email:hover {
+  background: #fee2e2;
+}
+
+.creator-contact-pill--linkedin {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.creator-contact-pill--linkedin:hover {
+  background: #dbeafe;
+}
+
+.creator-contact-pill__icon {
+  display: inline-flex;
+}
+
 #creator-portfolio .container {
   max-width: var(--max-width);
 }

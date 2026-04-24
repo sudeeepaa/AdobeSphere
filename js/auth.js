@@ -14,6 +14,11 @@ function validateEmail(email) {
   return Utils.validateEmail(value);
 }
 
+function validateAdobeEmail(email) {
+  var value = String(email || "").trim();
+  return validateEmail(value) && /@adobe\.com$/i.test(value);
+}
+
 function validatePassword(password) {
   var value = String(password || "");
   return value.length >= 8;
@@ -45,7 +50,7 @@ var api = {
     var Storage = window.Storage;
     var email = normalizeEmail((formData && formData.email) || "");
 
-    if (!validateEmail(email)) {
+    if (!validateAdobeEmail(email)) {
       return Promise.reject(new Error("INVALID_EMAIL"));
     }
 
