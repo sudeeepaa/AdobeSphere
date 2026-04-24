@@ -165,7 +165,7 @@ function init() {
       return;
     }
 
-    document.title = (creator.name || "Creator") + " — Adobisphere";
+    document.title = (creator.name || "Creator") + " — Adobesphere";
 
     populateHeader(creator);
     populateBio(creator);

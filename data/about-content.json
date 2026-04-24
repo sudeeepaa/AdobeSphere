@@ -1,6 +1,6 @@
 {
     "platformIntro":  [
-                          "Adobisphere is a student-built platform that brings Adobe\u0027s creative world into one organized, easy-to-explore space. Instead of jumping across multiple pages and announcements, you can discover upcoming events, fresh blog stories, and standout creators in one continuous experience.",
+                          "Adobesphere is a student-built platform that brings Adobe\u0027s creative world into one organized, easy-to-explore space. Instead of jumping across multiple pages and announcements, you can discover upcoming events, fresh blog stories, and standout creators in one continuous experience.",
                           "The project is designed for learners, professionals, and enthusiasts who want to stay connected to Adobe\u0027s evolving creative community. From workshops and conference highlights to practical product insights, the platform helps people find the content that fits their interests and turn inspiration into action.",
                           "At its core, this platform celebrates the people behind the work: designers, developers, marketers, photographers, and creators shaping the future of digital creativity. While it is not an official Adobe property, it is built with admiration for the ecosystem and a goal of making community knowledge more accessible to everyone."
                       ],
@@ -178,7 +178,7 @@
                     },
                     {
                             "question": "Is this platform free to use?",
-                            "answer": "Yes \u2014 the Adobisphere platform is completely free to explore, use, and contribute to."
+                            "answer": "Yes \u2014 the Adobesphere platform is completely free to explore, use, and contribute to."
                     }
                 ]
 }

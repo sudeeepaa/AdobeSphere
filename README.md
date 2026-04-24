@@ -1,8 +1,8 @@
-# Adobisphere
+# Adobesphere
 
 ### Your Gateway to the Adobe Community Ecosystem
 
-Adobisphere is a comprehensive, multi-page web platform designed to centralize Adobe-focused events, blogs, and creator profiles. It serves as a central hub for the community to discover content, register for events, and interact with creators through a seamless, unified experience.
+Adobesphere is a comprehensive, multi-page web platform designed to centralize Adobe-focused events, blogs, and creator profiles. It serves as a central hub for the community to discover content, register for events, and interact with creators through a seamless, unified experience.
 
 This project is implemented as a sophisticated static site with a localized data layer, prioritizing architectural clarity, modular design, and robust state management.
 
@@ -59,7 +59,7 @@ AdobeEcosystem/
 
 ## Project Architecture
 
-Adobisphere follows a modular architectural pattern where concerns are strictly separated between data, logic, and presentation.
+Adobesphere follows a modular architectural pattern where concerns are strictly separated between data, logic, and presentation.
 
 ### Architectural Overview
 
@@ -90,8 +90,8 @@ To run this project locally, you need a web server. Serving the files directly v
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/your-username/Adobisphere.git
-    cd Adobisphere
+    git clone https://github.com/your-username/Adobesphere.git
+    cd Adobesphere
     ```
 
 2.  **Serve the Application**:

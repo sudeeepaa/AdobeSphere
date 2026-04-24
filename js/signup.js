@@ -289,7 +289,7 @@ function handleSubmit() {
     avatarSrc: payload.avatarSrc
   }).then(function () {
     setLoading(false);
-    Utils.showToast("Welcome to Adobisphere, " + payload.name + "!", "success", 1600);
+    Utils.showToast("Welcome to Adobesphere, " + payload.name + "!", "success", 1600);
 
     setTimeout(function () {
       var target = appPath("pages/user-profile.html");

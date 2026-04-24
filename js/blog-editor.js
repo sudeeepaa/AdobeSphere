@@ -27,7 +27,7 @@ function plainTextFromContent(contentBlocks) {
 
 function getExcerptFromText(text) {
   var raw = String(text || "").replace(/\s+/g, " ").trim();
-  if (!raw) return "User submitted article from Adobisphere.";
+  if (!raw) return "User submitted article from Adobesphere.";
   return raw.slice(0, 200);
 }
 
@@ -169,7 +169,7 @@ function setupSubmit() {
         name: user && user.name ? user.name : "Community Author",
         designation: user && user.designation ? user.designation : "Community Contributor",
         avatar: user && user.avatarSrc ? user.avatarSrc : "assets/images/profiles/default-user.jpg",
-        bio: user && user.bio ? user.bio : "Adobisphere community member.",
+        bio: user && user.bio ? user.bio : "Adobesphere community member.",
         socials: user && user.socials ? user.socials : { linkedin: "#" }
       },
       publishedDate: publishedDate,
