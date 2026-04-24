@@ -334,12 +334,22 @@ function saveProfile() {
   }
 
   var linkedinValue = byId("social-linkedin").value.trim();
-  if (linkedinValue) {
-    if (!Utils.validateUrl(linkedinValue)) {
-      Utils.showToast("LinkedIn URL must start with https://", "error");
-      byId("social-linkedin").focus();
-      return;
-    }
+  if (!linkedinValue) {
+    Utils.showToast("LinkedIn profile is required.", "error");
+    byId("social-linkedin").focus();
+    return;
+  }
+
+  if (!Utils.validateUrl(linkedinValue)) {
+    Utils.showToast("LinkedIn URL must start with https://", "error");
+    byId("social-linkedin").focus();
+    return;
+  }
+
+  if (!/^https:\/\/(www\.)?linkedin\.com\//i.test(linkedinValue)) {
+    Utils.showToast("Please provide a valid linkedin.com profile URL.", "error");
+    byId("social-linkedin").focus();
+    return;
   }
 
   var socials = {

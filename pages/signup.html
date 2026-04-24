@@ -18,7 +18,7 @@
       <form id="signup-form" novalidate>
         <div class="signup-brand-header">
           <div class="brand-wordmark">
-            <span class="brand-adobe">Adobi</span><span class="brand-ecosystem">sphere</span>
+            <span class="brand-adobe">Adobe</span><span class="brand-ecosystem">sphere</span>
           </div>
           <h1>Join Adobesphere - Creative Experience Platform</h1>
           <p>Create your creator profile and get started</p>
@@ -59,6 +59,9 @@
             <span id="strength-bar"></span>
             <span id="strength-label"></span>
           </div>
+          <div id="password-feedback" aria-live="polite">
+            <p id="password-suggestion"></p>
+          </div>
           <span class="form-error" data-error-for="signup-password"></span>
         </div>
 
@@ -77,14 +80,14 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="signup-bio">About / Bio*</label>
+          <label class="form-label" for="signup-bio">About / Bio (optional)</label>
           <textarea id="signup-bio" class="form-input" rows="4" maxlength="500"></textarea>
           <span id="bio-char-count">0 / 500 characters</span>
           <span class="form-error" data-error-for="signup-bio"></span>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="social-linkedin">LinkedIn (optional)</label>
+          <label class="form-label" for="social-linkedin">LinkedIn Profile*</label>
           <input id="social-linkedin" class="form-input" type="url" placeholder="https://linkedin.com/in/yourprofile">
           <span class="form-error" data-error-for="social-linkedin"></span>
         </div>
@@ -109,6 +112,16 @@
 
   <div id="signup-loading" aria-hidden="true">
     <div class="spinner" aria-label="Loading"></div>
+  </div>
+
+  <div id="employee-only-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box employee-only-box">
+      <h2>Adobe Employees Only</h2>
+      <p class="text-muted" style="margin-top:10px;">This application is only for Adobe-registered employees. Please sign up using your @adobe.com email address.</p>
+      <div style="display:flex;justify-content:flex-end;margin-top:24px;">
+        <button type="button" id="employee-only-ok" class="btn btn-primary">Okay</button>
+      </div>
+    </div>
   </div>
 
   <div id="toast-container"></div>

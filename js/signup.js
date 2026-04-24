@@ -72,7 +72,6 @@ function clearAllErrors() {
   });
 }
 
-
 function setupAvatarPreview() {
   var input = byId("signup-avatar");
   var preview = byId("avatar-preview");
@@ -99,39 +98,79 @@ function setupAvatarPreview() {
   });
 }
 
+function getPasswordChecks(password) {
+  var value = String(password || "");
+  return {
+    lengthValue: value.length,
+    hasMinLength: value.length >= 8,
+    hasUppercase: /[A-Z]/.test(value),
+    hasLowercase: /[a-z]/.test(value),
+    hasNumber: /\d/.test(value),
+    hasSpecial: /[^a-zA-Z0-9]/.test(value)
+  };
+}
+
 function evaluateStrength(password) {
-  var hasLetters = /[a-zA-Z]/.test(password);
-  var hasNumbers = /\d/.test(password);
-  var hasSpecial = /[^a-zA-Z0-9]/.test(password);
+  var checks = getPasswordChecks(password);
+  var metCount = [
+    checks.hasMinLength,
+    checks.hasUppercase,
+    checks.hasLowercase,
+    checks.hasNumber,
+    checks.hasSpecial
+  ].filter(Boolean).length;
 
-  if (password.length >= 10 && hasLetters && hasNumbers && hasSpecial) {
-    return { label: "Strong", width: "100%", color: "#22c55e" };
+  if (checks.lengthValue === 0) {
+    return { label: "", width: "0", color: "transparent", checks: checks };
   }
 
-  if (password.length >= 8 && hasLetters && hasNumbers) {
-    return { label: "Fair", width: "66%", color: "#f97316" };
+  if (metCount === 5 && checks.lengthValue >= 10) {
+    return { label: "Strong", width: "100%", color: "#22c55e", checks: checks };
   }
 
-  if (password.length > 0) {
-    return { label: "Weak", width: "33%", color: "#ef4444" };
+  if (checks.hasMinLength && metCount >= 3) {
+    return { label: "Fair", width: "66%", color: "#f97316", checks: checks };
   }
 
-  return { label: "", width: "0", color: "transparent" };
+  return { label: "Weak", width: "33%", color: "#ef4444", checks: checks };
+}
+
+function getStrengthGuidanceText() {
+  return "To make your password stronger, use a minimum of 8 characters, including 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.";
 }
 
 function setupPasswordStrength() {
   var passwordInput = byId("signup-password");
   var bar = byId("strength-bar");
   var label = byId("strength-label");
-  if (!passwordInput || !bar || !label) return;
+  var suggestion = byId("password-suggestion");
+  if (!passwordInput || !bar || !label || !suggestion) return;
 
-  passwordInput.addEventListener("input", function () {
+  function updateFeedback() {
     var strength = evaluateStrength(passwordInput.value || "");
     bar.style.width = strength.width;
     bar.style.background = strength.color;
     label.textContent = strength.label;
     label.style.color = strength.color;
-  });
+
+    if (!strength.checks.lengthValue) {
+      suggestion.textContent = "Tip: use a mix of letters, numbers, and symbols for a stronger password.";
+      suggestion.style.color = "var(--text-secondary)";
+      return;
+    }
+
+    if (strength.label === "Weak" || strength.label === "Fair") {
+      suggestion.textContent = getStrengthGuidanceText();
+      suggestion.style.color = strength.color;
+      return;
+    }
+
+    suggestion.textContent = "Great password. You meet all recommended conditions.";
+    suggestion.style.color = "#15803d";
+  }
+
+  passwordInput.addEventListener("input", updateFeedback);
+  updateFeedback();
 }
 
 function togglePassword(targetId, button) {
@@ -172,6 +211,37 @@ function setupBioCounter() {
   update();
 }
 
+function isAdobeEmployeeEmail(email) {
+  return /@adobe\.com$/i.test(String(email || "").trim());
+}
+
+function showEmployeeOnlyModal() {
+  var modal = byId("employee-only-modal");
+  if (!modal) return;
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+}
+
+function hideEmployeeOnlyModal() {
+  var modal = byId("employee-only-modal");
+  if (!modal) return;
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+}
+
+function setupEmployeeOnlyModal() {
+  var modal = byId("employee-only-modal");
+  var okButton = byId("employee-only-ok");
+  if (!modal || !okButton) return;
+
+  okButton.addEventListener("click", hideEmployeeOnlyModal);
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      hideEmployeeOnlyModal();
+    }
+  });
+}
+
 function collectForm() {
   var name = byId("signup-name").value.trim();
   var designation = byId("signup-designation").value.trim();
@@ -205,6 +275,7 @@ function collectForm() {
 
 function validateForm(payload) {
   var ok = true;
+  var passwordStrength = evaluateStrength(payload.password || "");
 
   if (!payload.name) {
     setFieldError("signup-name", "Please enter your full name.");
@@ -223,11 +294,20 @@ function validateForm(payload) {
     if (!Utils.validateEmail(payload.email)) {
       setFieldError("signup-email", "Please enter a valid email address.");
       ok = false;
+    } else if (!isAdobeEmployeeEmail(payload.email)) {
+      setFieldError("signup-email", "Only @adobe.com email addresses are allowed.");
+      showTopError("This application is only for Adobe-registered employees.");
+      showEmployeeOnlyModal();
+      ok = false;
     }
   }
 
-  if (!payload.password || payload.password.length < 8) {
-    setFieldError("signup-password", "Password must be at least 8 characters.");
+  if (!payload.password) {
+    setFieldError("signup-password", "Password is required.");
+    ok = false;
+  } else if (passwordStrength.label === "Weak") {
+    setFieldError("signup-password", "Weak password is not allowed. Please use a fair or strong password.");
+    showTopError(getStrengthGuidanceText());
     ok = false;
   }
 
@@ -236,18 +316,17 @@ function validateForm(payload) {
     ok = false;
   }
 
-  if (!payload.bio || payload.bio.length < 30) {
-    setFieldError("signup-bio", "Bio must be at least 30 characters.");
-    ok = false;
-  }
-
   var linkedin = payload.socials && payload.socials.linkedin ? String(payload.socials.linkedin).trim() : "";
 
-  if (linkedin) {
-    if (!Utils.validateUrl(linkedin)) {
-      setFieldError("social-linkedin", "Please enter a valid LinkedIn URL starting with https://");
-      ok = false;
-    }
+  if (!linkedin) {
+    setFieldError("social-linkedin", "LinkedIn profile is required.");
+    ok = false;
+  } else if (!Utils.validateUrl(linkedin)) {
+    setFieldError("social-linkedin", "Please enter a valid LinkedIn URL starting with https://");
+    ok = false;
+  } else if (!/^https:\/\/(www\.)?linkedin\.com\//i.test(linkedin)) {
+    setFieldError("social-linkedin", "Please provide a valid linkedin.com profile URL.");
+    ok = false;
   }
 
   var existingUser = (Storage && typeof Storage.getUserByEmail === "function")
@@ -298,6 +377,13 @@ function handleSubmit() {
   }).catch(function (error) {
     setLoading(false);
 
+    if (error && error.message === "INVALID_EMAIL") {
+      setFieldError("signup-email", "Only @adobe.com email addresses are allowed.");
+      showTopError("This application is only for Adobe-registered employees.");
+      showEmployeeOnlyModal();
+      return;
+    }
+
     if (error && error.message === "EMAIL_EXISTS") {
       setFieldError("signup-email", "Email already in use.");
       showTopError("An account with this email already exists. <a href='" + appPath("pages/login.html") + "'>Sign in instead →</a>", true);
@@ -315,6 +401,7 @@ function init() {
   }
 
   setupAvatarPreview();
+  setupEmployeeOnlyModal();
   setupPasswordStrength();
   setupPasswordToggles();
   setupBioCounter();

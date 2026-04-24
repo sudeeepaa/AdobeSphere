@@ -253,6 +253,7 @@ var api = {
         id: "user:" + identity,
         name: (user && user.name) || "Community Creator",
         designation: (user && user.designation) || "Community Member",
+        email: (user && user.email) || "",
         avatar: avatar || "assets/images/profiles/default-user.jpg",
         bio: bio,
         fullBio: bio,

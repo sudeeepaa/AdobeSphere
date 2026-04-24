@@ -44,6 +44,18 @@
   top: 6px;
 }
 
+#password-feedback {
+  margin-top: 28px;
+}
+
+#password-suggestion {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  line-height: 1.6;
+  transition: color 200ms ease;
+}
+
 .avatar-preview-wrap {
   display: flex;
   align-items: center;
@@ -80,6 +92,10 @@
 
 #signup-avatar {
   display: none;
+}
+
+.employee-only-box {
+  max-width: 520px;
 }
 
 #signup-error a {
