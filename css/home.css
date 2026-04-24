@@ -243,23 +243,6 @@
   color: var(--neutral-light);
 }
 
-#cta-banner {
-  background: var(--bg-dark);
-  color: var(--white);
-  padding: 100px 24px;
-}
-
-.cta-banner__inner {
-  text-align: center;
-  max-width: 840px;
-}
-
-#cta-banner p {
-  margin: 14px auto 24px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.05rem;
-}
-
 #featured-creators .empty-state {
   background: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.84);
@@ -289,9 +272,5 @@
 @media (max-width: 768px) {
   .hero__content p {
     font-size: 1rem;
-  }
-
-  #cta-banner {
-    padding: 72px 20px;
   }
 }
