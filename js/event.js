@@ -197,6 +197,8 @@ function setupModalHandlers(eventId) {
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      byId("reg-error").textContent = "";
+      byId("reg-success").textContent = "";
 
       if (Storage.isEventRegistered(eventId)) {
         byId("reg-error").textContent =
@@ -205,6 +207,12 @@ function setupModalHandlers(eventId) {
       }
 
       var foodPref = byId("reg-food") ? byId("reg-food").value : "";
+      if (!foodPref) {
+        byId("reg-error").textContent = "Please select a food preference to continue.";
+        if (byId("reg-food")) byId("reg-food").focus();
+        return;
+      }
+
       var bringsCompanion = modal.querySelector('input[name="reg-companion"]:checked');
       var companionChoice = bringsCompanion ? bringsCompanion.value : "no";
 
