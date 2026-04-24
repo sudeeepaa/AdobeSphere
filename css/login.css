@@ -13,3 +13,22 @@ main {
   color: var(--text-muted);
   margin-bottom: 0;
 }
+
+.login-brand-header .brand-adobe {
+  margin-right: 0;
+}
+
+#login-submit {
+  justify-content: center;
+  text-align: center;
+}
+
+.password-input-wrap {
+  position: relative;
+}
+
+.password-input-wrap #toggle-password,
+.password-input-wrap .toggle-password {
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -4,6 +4,25 @@
   margin-bottom: 40px;
 }
 
+.signup-brand-header .brand-adobe {
+  margin-right: 0;
+}
+
+#signup-submit {
+  justify-content: center;
+  text-align: center;
+}
+
+.password-input-wrap {
+  position: relative;
+}
+
+.password-input-wrap #toggle-password,
+.password-input-wrap .toggle-password {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .social-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
