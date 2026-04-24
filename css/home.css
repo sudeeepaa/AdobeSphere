@@ -171,6 +171,8 @@
 
 #featured-creators {
   background: #574f57;
+  padding-bottom: clamp(40px, 6vw, 88px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 #featured-creators .section-heading {
