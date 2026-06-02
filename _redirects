@@ -1,1 +1,2 @@
-/* /index.html 200
+# Multi-page static site: let Netlify serve real files and return 404 for
+# anything that doesn't exist (handled by /404.html). No SPA fallback.
